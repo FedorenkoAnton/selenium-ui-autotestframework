@@ -2,12 +2,13 @@ package dev.selenium.pageelements;
 
 import org.openqa.selenium.WebDriver;
 
-public class Link extends BasicElement {
+public class Button extends BasicElement {
 
-    public Link(String xPath, WebDriver driver) {
+    public Button(String xPath, WebDriver driver) {
         super(xPath, driver);
     }
-    public void clickOnLink() {
+
+    public void clickOnButton() {
         findElement().click();
     }
 }

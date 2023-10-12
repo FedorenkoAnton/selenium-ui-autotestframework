@@ -12,6 +12,6 @@ public class NavBar extends BasePage {
     }
 
     public void clickOnDownloadsLink() {
-        downloads.click();
+        downloads.clickOnLink();
     }
 }
