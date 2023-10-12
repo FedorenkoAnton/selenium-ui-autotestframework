@@ -2,7 +2,6 @@ package dev.selenium.hooks;
 
 import dev.selenium.containers.WebDriverContainer;
 import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
 
 public class CucumberHooks {
 

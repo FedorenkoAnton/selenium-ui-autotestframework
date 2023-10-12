@@ -3,7 +3,6 @@ package dev.selenium.manager;
 import dev.selenium.pages.DownloadsPage;
 import dev.selenium.pages.HomePage;
 import dev.selenium.pages.commonpageelements.NavBar;
-import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 
 public class PageFactoryManager {
