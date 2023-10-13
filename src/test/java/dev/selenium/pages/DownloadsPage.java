@@ -25,7 +25,9 @@ public class DownloadsPage extends BasePage {
             "//div[@id='supported-browsers']//h4[@class='card-title fw-bold']", getDriver());
 
     public void setNavBar(NavBar navBar) {
-        this.navBar = navBar;
+        if (this.navBar == null) {
+            this.navBar = navBar;
+        }
     }
 
     public List<String> getListOfAvailableProgramingLanguages() {
