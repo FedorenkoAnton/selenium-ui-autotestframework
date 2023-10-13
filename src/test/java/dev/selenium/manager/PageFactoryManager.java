@@ -1,5 +1,6 @@
 package dev.selenium.manager;
 
+import dev.selenium.pages.DocumentationPage;
 import dev.selenium.pages.DownloadsPage;
 import dev.selenium.pages.HomePage;
 import dev.selenium.pages.commonpageelements.NavBar;
@@ -24,5 +25,11 @@ public class PageFactoryManager {
         DownloadsPage downloadsPage = new DownloadsPage(driver);
         downloadsPage.setNavBar(navBar);
         return downloadsPage;
+    }
+
+    public DocumentationPage getDocumentationPage() {
+        DocumentationPage documentationPage = new DocumentationPage(driver);
+        documentationPage.setNavBar(navBar);
+        return documentationPage;
     }
 }
