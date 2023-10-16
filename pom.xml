@@ -12,23 +12,24 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <cucumber-version>7.11.1</cucumber-version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.11.1</version>
+            <version>${cucumber-version}</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
-            <version>7.11.1</version>
+            <version>${cucumber-version}</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit-platform-engine</artifactId>
-            <version>7.11.1</version>
+            <version>${cucumber-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -70,15 +71,38 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.2</version>
+                <executions>
+                    <execution>
+                        <id>integration-tests</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                            <includes>
+                                <include>**/*SeleniumWebUITestRunner.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.2</version>
-                <configuration>
-                    <properties>
-                        <configurationParameters>
-                            cucumber.junit-platform.naming-strategy=long
-                        </configurationParameters>
-                    </properties>
-                </configuration>
+                <version>2.22.2</version>
+                <executions>
+                    <execution>
+                        <id>unit-tests</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
