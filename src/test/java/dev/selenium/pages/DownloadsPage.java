@@ -7,8 +7,6 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 
-import static dev.selenium.constants.TimeConstant.TIME_TO_WAIT;
-
 public class DownloadsPage extends BasePage {
     private NavBar navBar;
 
@@ -24,30 +22,33 @@ public class DownloadsPage extends BasePage {
     private final ContentContainer supportedBrowsers = new ContentContainer(
             "//div[@id='supported-browsers']//h4[@class='card-title fw-bold']", getDriver());
 
-    public void setNavBar(NavBar navBar) {
-        if (this.navBar == null) {
-            this.navBar = navBar;
-        }
-    }
-
     public List<String> getListOfAvailableProgramingLanguages() {
         return supportedLanguages.getListOfTextFromElements();
     }
 
     public void waitUntilExpectedNumberOfSupportedLanguagesPresent(int numberOfElements) {
-        super.waitUntilExpectedNumberOfElementsPresent(TIME_TO_WAIT, numberOfElements, supportedLanguages.getXPath());
+        super.waitUntilExpectedNumberOfElementsPresent(numberOfElements, supportedLanguages.getXPath());
     }
 
     public void waitUntilExpectedNumberOfBrowsersPresent(int numberOfBrowsers) {
-        super.waitUntilExpectedNumberOfElementsPresent(TIME_TO_WAIT, numberOfBrowsers, supportedBrowsers.getXPath());
+        super.waitUntilExpectedNumberOfElementsPresent(numberOfBrowsers, supportedBrowsers.getXPath());
     }
 
     public void waitUntilBrowserButtonClickable() {
-        super.waitUntilClickable(TIME_TO_WAIT, browsersButton.getXPath());
+        super.waitUntilClickable(browsersButton.getXPath());
     }
 
     public void waitUntilAllBrowsersVisible() {
-        super.waitUntilAllElementsVisible(TIME_TO_WAIT, supportedBrowsers.getXPath());
+        super.waitUntilAllElementsVisible(supportedBrowsers.getXPath());
+    }
+
+    public void scrollSupportedProgramingLanguagesIntoView() {
+        String firstElementDiv = "//parent::div//parent::div[@class='card h-100 bg-transparent border-0']";
+        scrollIntoView(supportedLanguages.getXPath() + firstElementDiv);
+    }
+
+    public void scrollSupportedBrowsersIntoView() {
+        scrollIntoView(supportedBrowsers.getXPath());
     }
 
     public void clickBrowserButtonWithJsScript() {

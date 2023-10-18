@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import static dev.selenium.matchers.CodeSnippetMatcher.hasSameCodeExamples;
+import static dev.selenium.matchers.MapMatcher.mapValuesAreEqualTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -31,12 +31,12 @@ public class CodeSnippetMatcherTests {
 
     @Test
     void twoMapsWithSameValuesAreEqual() {
-        assertThat(actualMap, hasSameCodeExamples(expectedMap));
+        assertThat(actualMap, mapValuesAreEqualTo(expectedMap));
     }
 
     @Test
     void differentMapsNotEqual() {
-        assertThrows(AssertionError.class , ()-> assertThat(actualMap, hasSameCodeExamples(mapWithDifferentValues)));
+        assertThrows(AssertionError.class , ()-> assertThat(actualMap, mapValuesAreEqualTo(mapWithDifferentValues)));
     }
 
     @Test
@@ -58,7 +58,7 @@ public class CodeSnippetMatcherTests {
                         "============================\n";
         AssertionError thrown = Assertions
                 .assertThrows(AssertionError.class,
-                        () -> assertThat(actualMap, hasSameCodeExamples(mapWithDifferentValues)));
+                        () -> assertThat(actualMap, mapValuesAreEqualTo(mapWithDifferentValues)));
         assertEquals(expectedMessage, thrown.getMessage());
     }
 }

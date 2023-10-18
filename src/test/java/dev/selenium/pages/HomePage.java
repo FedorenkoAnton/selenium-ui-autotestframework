@@ -9,14 +9,4 @@ public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
     }
-
-    public NavBar getNavBar() {
-        return this.navBar;
-    }
-
-    public void setNavBar(NavBar navBar) {
-        if (this.navBar == null) {
-            this.navBar = navBar;
-        }
-    }
 }

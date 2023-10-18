@@ -23,6 +23,7 @@ public class DownloadsPageSteps {
     @Then("^user sees following programing languages$")
     public void user_sees_list_of_available_programing_languages(DataTable dataTable) {
         downloadsPage.waitUntilExpectedNumberOfSupportedLanguagesPresent(5);
+        downloadsPage.scrollSupportedProgramingLanguagesIntoView();
         List<String> expectedAvailableProgramingLanguages = dataTable.asList(String.class);
         List<String> availableProgramingLanguages =
                 downloadsPage.getListOfAvailableProgramingLanguages();
@@ -40,6 +41,7 @@ public class DownloadsPageSteps {
     @Then("user sees following list of supported browsers")
     public void userSeesFollowingListOfSupportedBrowsers(DataTable dataTable) {
         downloadsPage.waitUntilExpectedNumberOfBrowsersPresent(6);
+        downloadsPage.scrollSupportedBrowsersIntoView();
         downloadsPage.waitUntilAllBrowsersVisible();
         List<String> supportedBrowsersOnPage = downloadsPage.getListOfSupportedPlatforms();
         List<String> expectedListOfBrowsers = dataTable.asList(String.class);

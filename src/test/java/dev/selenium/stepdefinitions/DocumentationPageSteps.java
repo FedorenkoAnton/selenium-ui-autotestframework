@@ -5,13 +5,12 @@ import dev.selenium.pages.DocumentationPage;
 import dev.selenium.utils.filereader.FileReader;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
+import org.hamcrest.Matchers;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static dev.selenium.matchers.CodeSnippetMatcher.hasSameCodeExamples;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class DocumentationPageSteps {
@@ -25,17 +24,16 @@ public class DocumentationPageSteps {
     public void userSeesCodeSnippetsOfProgramingLanguages(DataTable dataTable) {
         List<String> programingLanguages = dataTable.asList(String.class);
         Map<String, String> expectedCodeSnippets = getCodeSnippetsExamples(programingLanguages);
-        Map<String, String> actualCodeSnippets = new HashMap<>();
-
+        documentationPage.scrollTabButtonsListIntoView();
         for (var programingLanguage : programingLanguages) {
             String programingLanguageInLowerCase = programingLanguage.toLowerCase();
             documentationPage.waitUntilTabButtonClickable(programingLanguageInLowerCase);
             documentationPage.clickOnTabButton(programingLanguageInLowerCase);
             documentationPage.waitUntilTextTabVisible(programingLanguageInLowerCase);
             String actualTextInTab = documentationPage.getTextFromTab(programingLanguageInLowerCase);
-            actualCodeSnippets.put(programingLanguageInLowerCase, actualTextInTab);
+            assertThat("Text from tab should be equal to expected",
+                    actualTextInTab, Matchers.equalTo(expectedCodeSnippets.get(programingLanguageInLowerCase)));
         }
-        assertThat("", actualCodeSnippets, hasSameCodeExamples(expectedCodeSnippets));
     }
 
     private Map<String, String> getCodeSnippetsExamples(List<String> programingLanguages) {
