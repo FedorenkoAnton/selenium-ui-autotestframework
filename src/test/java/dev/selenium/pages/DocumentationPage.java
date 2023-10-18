@@ -1,6 +1,7 @@
 package dev.selenium.pages;
 
 import dev.selenium.pageelements.Button;
+import dev.selenium.pageelements.Header;
 import dev.selenium.pageelements.Tab;
 import dev.selenium.pages.commonpageelements.NavBar;
 import org.openqa.selenium.WebDriver;
@@ -8,10 +9,9 @@ import org.openqa.selenium.WebDriver;
 import java.util.Map;
 import java.util.Objects;
 
-import static dev.selenium.constants.TimeConstant.TIME_TO_WAIT;
-
 public class DocumentationPage extends BasePage {
     private NavBar navBar;
+    private final Header tabButtons = new Header("//ul[@class='nav nav-tabs']", getDriver());
 
     public DocumentationPage(WebDriver driver) {
         super(driver);
@@ -49,16 +49,14 @@ public class DocumentationPage extends BasePage {
     }
 
     public void waitUntilTextTabVisible(String textTabName) {
-        super.waitUntilAllElementsVisible(TIME_TO_WAIT, getTabsList().get(textTabName).getXPath());
+        waitUntilAllElementsVisible(getTabsList().get(textTabName).getXPath());
     }
 
     public void waitUntilTabButtonClickable(String tabButtonName) {
-        super.waitUntilClickable(TIME_TO_WAIT, getTabButtonsList().get(tabButtonName).getXPath());
+        waitUntilClickable(getTabButtonsList().get(tabButtonName).getXPath());
     }
 
-    public void setNavBar(NavBar navBar) {
-        if (this.navBar == null) {
-            this.navBar = navBar;
-        }
+    public void scrollTabButtonsListIntoView() {
+        scrollIntoView(tabButtons.getXPath());
     }
 }

@@ -8,13 +8,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class CodeSnippetMatcher extends TypeSafeMatcher<Map<String, String>> {
+public class MapMatcher extends TypeSafeMatcher<Map<String, String>> {
     private final Map<String, String> expectedMap;
     private Map<String, String> actualMap;
     private final Map<String, Boolean> compareResultsMap = new HashMap<>();
 
 
-    public CodeSnippetMatcher(Map<String, String> expectedMap) {
+    public MapMatcher(Map<String, String> expectedMap) {
         this.expectedMap = expectedMap;
     }
 
@@ -43,8 +43,8 @@ public class CodeSnippetMatcher extends TypeSafeMatcher<Map<String, String>> {
         description.appendText(createMismatchMessage(expectedMap));
     }
 
-    public static Matcher<Map<String, String>> hasSameCodeExamples(Map<String, String> expectedMap) {
-        return new CodeSnippetMatcher(expectedMap);
+    public static Matcher<Map<String, String>> mapValuesAreEqualTo(Map<String, String> expectedMap) {
+        return new MapMatcher(expectedMap);
     }
 
     private String createMismatchMessage(Map<String, String> mapWithItems) {

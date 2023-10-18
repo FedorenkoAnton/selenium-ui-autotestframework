@@ -17,4 +17,8 @@ public class ContentContainer extends BasicElement {
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
     }
+
+    public WebElement getElementFromContainerByIndex(int index) {
+        return findElements().get(index);
+    }
 }
