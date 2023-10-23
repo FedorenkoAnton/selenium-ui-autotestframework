@@ -2,6 +2,7 @@ package dev.selenium.manager;
 
 import dev.selenium.pages.DocumentationPage;
 import dev.selenium.pages.DownloadsPage;
+import dev.selenium.pages.GitHubSeleniumPage;
 import dev.selenium.pages.HomePage;
 import dev.selenium.pages.commonpageelements.NavBar;
 import org.openqa.selenium.WebDriver;
@@ -31,5 +32,9 @@ public class PageFactoryManager {
         DocumentationPage documentationPage = new DocumentationPage(driver);
         documentationPage.setNavBar(navBar);
         return documentationPage;
+    }
+
+    public GitHubSeleniumPage getGitHubSeleniumPage() {
+        return new GitHubSeleniumPage(driver);
     }
 }

@@ -4,6 +4,7 @@ import dev.selenium.containers.PageFactoryContainer;
 import dev.selenium.pages.DocumentationPage;
 import dev.selenium.utils.filereader.FileReader;
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.hamcrest.Matchers;
 
@@ -34,6 +35,13 @@ public class DocumentationPageSteps {
             assertThat("Text from tab should be equal to expected",
                     actualTextInTab, Matchers.equalTo(expectedCodeSnippets.get(programingLanguageInLowerCase)));
         }
+    }
+
+    @And("^clicks on 'View full example on GitHub'")
+    public void clicksOnViewFullExampleOnGitHub() {
+        documentationPage.scrollViewFullExampleOnGitHubIntoView();
+        documentationPage.waitUntilViewFullExampleOnGitHubIsClickable();
+        documentationPage.clickOnViewFullExampleOnGitHub();
     }
 
     private Map<String, String> getCodeSnippetsExamples(List<String> programingLanguages) {

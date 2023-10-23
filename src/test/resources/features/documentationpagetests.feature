@@ -12,3 +12,9 @@ Feature: Documentation page
       | Ruby       |
       | JavaScript |
       | Kotlin     |
+
+    Scenario: As a selenium.dev user I want to be sure that link to GitHub below code examples tab lead exactly to selenium.github.io
+      When user clicks on Documentation link
+      And clicks on 'View full example on GitHub'
+      Then new tab's URL with host github.com is open
+      And user is on seleniumhq.github.io repository page
