@@ -10,4 +10,8 @@ public class Link extends BasicElement {
     public void clickOnLink() {
         findElement().click();
     }
+
+    public String getText() {
+        return findElement().getText();
+    }
 }
