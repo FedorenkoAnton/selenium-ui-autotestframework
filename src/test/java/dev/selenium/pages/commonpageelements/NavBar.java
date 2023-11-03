@@ -1,5 +1,6 @@
 package dev.selenium.pages.commonpageelements;
 
+import dev.selenium.pageelements.Button;
 import dev.selenium.pageelements.Header;
 import dev.selenium.pageelements.Link;
 import dev.selenium.pages.BasePage;
@@ -11,6 +12,8 @@ public class NavBar extends BasePage {
     private final Link downloads = new Link("//a[@href='/downloads']", getDriver());
     private final Link documentation = new Link("//a[@href='/documentation']", getDriver());
 
+    private final Button searchButton = new Button("//button[@class='DocSearch DocSearch-Button']", getDriver());
+
     public NavBar(WebDriver driver) {
         super(driver);
     }
@@ -21,6 +24,10 @@ public class NavBar extends BasePage {
 
     public void clickOnDocumentationLink() {
         documentation.clickOnLink();
+    }
+
+    public void clickOnSearchButton() {
+        searchButton.clickOnButton();
     }
 
     public Header getHeader() {
