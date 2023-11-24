@@ -18,7 +18,7 @@ public class ContentContainer extends BasicElement {
                 .collect(Collectors.toList());
     }
 
-    public WebElement getElementFromContainerByIndex(int index) {
-        return findElements().get(index);
+    public List<WebElement> getElements() {
+        return findElements();
     }
 }

@@ -53,11 +53,22 @@ public abstract class BasePage {
     }
 
     protected void scrollIntoView(String xPath) {
-        WebElement element = driver.findElement(By.xpath(xPath));
-        WebElement navBar = driver.findElement(By.xpath(getNavBar().getHeader().getXPath()));
-        int deltaY = element.getRect().y - navBar.getRect().height;
+        int deltaY = getElementDeltaY(xPath);
         new Actions(driver)
                 .scrollByAmount(0, deltaY)
                 .perform();
+    }
+
+    protected void scrollElementIntoViewWithOffset(int elementDeltaY, int offset) {
+        int deltaY = elementDeltaY - offset;
+        new Actions(driver)
+                .scrollByAmount(0, deltaY)
+                .perform();
+    }
+
+    protected int getElementDeltaY(String xPath) {
+        WebElement element = driver.findElement(By.xpath(xPath));
+        WebElement navBar = driver.findElement(By.xpath(getNavBar().getHeader().getXPath()));
+        return element.getRect().y - navBar.getRect().height;
     }
 }

@@ -2,13 +2,11 @@ package dev.selenium.pages;
 
 import dev.selenium.pageelements.Button;
 import dev.selenium.pageelements.ContentContainer;
-import dev.selenium.pages.commonpageelements.NavBar;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 
 public class DownloadsPage extends BasePage {
-    private NavBar navBar;
 
     public DownloadsPage(WebDriver driver) {
         super(driver);
