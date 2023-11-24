@@ -11,6 +11,7 @@ public class NavBar extends BasePage {
     private final Header header = new Header("//nav[contains(@class, 'js-navbar')]/parent::header", getDriver());
     private final Link downloads = new Link("//a[@href='/downloads']", getDriver());
     private final Link documentation = new Link("//a[@href='/documentation']", getDriver());
+    private final Link projects = new Link("//a[@href='/projects']", getDriver());
 
     private final Button searchButton = new Button("//button[@class='DocSearch DocSearch-Button']", getDriver());
 
@@ -28,6 +29,10 @@ public class NavBar extends BasePage {
 
     public void clickOnSearchButton() {
         searchButton.clickOnButton();
+    }
+
+    public void clickOnProjectsLink() {
+        projects.clickOnLink();
     }
 
     public Header getHeader() {

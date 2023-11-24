@@ -54,6 +54,8 @@ public class HomePageSteps {
             case DOCUMENTATION:
                 pageFactoryManager.getHomePage().getNavBar().clickOnDocumentationLink();
                 break;
+            case PROJECTS:
+                pageFactoryManager.getHomePage().getNavBar().clickOnProjectsLink();
         }
     }
 }

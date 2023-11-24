@@ -4,14 +4,12 @@ import dev.selenium.pageelements.Button;
 import dev.selenium.pageelements.Header;
 import dev.selenium.pageelements.Link;
 import dev.selenium.pageelements.Tab;
-import dev.selenium.pages.commonpageelements.NavBar;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
 import java.util.Objects;
 
 public class DocumentationPage extends BasePage {
-    private NavBar navBar;
     private final Header tabButtons = new Header("//ul[@class='nav nav-tabs']", getDriver());
     private final Link viewFullExampleOnGitHub = new Link
             ("//a[contains(@href, 'https://github.com/SeleniumHQ/seleniumhq.github.io/blob/trunk//examples/java/')]",

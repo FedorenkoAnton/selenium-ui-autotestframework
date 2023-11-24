@@ -5,7 +5,8 @@ import java.util.Objects;
 
 public enum NavBarLinks {
     DOWNLOADS("Downloads"),
-    DOCUMENTATION("Documentation");
+    DOCUMENTATION("Documentation"),
+    PROJECTS("Projects");
 
     private final String value;
 
