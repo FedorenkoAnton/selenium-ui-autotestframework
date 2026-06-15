@@ -20,12 +20,12 @@ public class DocumentationPage extends BasePage {
     }
 
     public Map<String,Button> getTabButtonsList() {
-        return Map.of("java", new Button("//button[@class='nav-link active persistLang-Java']", getDriver()),
-                "python", new Button("//button[@class='nav-link persistLang-Python']", getDriver()),
-                "csharp", new Button("//button[@class='nav-link persistLang-CSharp']", getDriver()),
-                "ruby", new Button("//button[@class='nav-link persistLang-Ruby']", getDriver()),
-                "javascript", new Button("//button[@class='nav-link persistLang-JavaScript']", getDriver()),
-                "kotlin", new Button("//button[@class='nav-link persistLang-Kotlin']", getDriver()));
+        return Map.of("java", new Button("//button[@data-td-tp-persist='java']", getDriver()),
+                "python", new Button("//button[@data-td-tp-persist='python']", getDriver()),
+                "csharp", new Button("//button[@data-td-tp-persist='csharp']", getDriver()),
+                "ruby", new Button("//button[@data-td-tp-persist='ruby']", getDriver()),
+                "javascript", new Button("//button[@data-td-tp-persist='javascript']", getDriver()),
+                "kotlin", new Button("//button[@data-td-tp-persist='kotlin']", getDriver()));
     }
 
     public Map<String, Tab> getTabsList() {
